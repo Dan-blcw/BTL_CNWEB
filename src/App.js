@@ -29,6 +29,11 @@ function App() {
   const [openForm, setOpenedForm] = useState(false);
   const [currentMode, setCurrentMode] = useState(MODE.LOGIN);
 
+  let isAdmin
+  if(Object.keys(infoUser).length > 0) {
+    isAdmin = infoUser?.role === "ADMIN" ;
+  }
+
   const handleOpenForm = () => {
     setOpenedForm(true);
   };
@@ -53,12 +58,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/products" element={<ProductUser />} />
-        <Route path="/user/account" element={<Account />} />
-        <Route path="/cart/checkout" element={<Checkout />} />
+        <Route path="/user/account" element={isLoggedIn ? <Account /> : <NotHavePermissionAccess />} />
+        <Route path="/cart/checkout" element={isLoggedIn ? <Checkout /> : <NotHavePermissionAccess />} />
         <Route path="/cart" element={<CartPage />} />
         <Route
           path="/admin/*"
-          element={isLoggedIn ? <ProductAdmin /> : <NotHavePermissionAccess />}
+          element={isLoggedIn && isAdmin ? <ProductAdmin /> : <NotHavePermissionAccess />}
         />
         <Route path="/product-detail/:id" element={<ProductDetail />} />
         <Route path="/*" element={<PageNotFound />} />

@@ -12,10 +12,11 @@ const FILTER_LIST = [
   {
     id: 1,
     getLabel: (filters) => `Key search: ${filters["search"]}`,
-    isActive: (filters) => true,
+    isActive: (filters) => {
+      return true
+    },
     isVisible: (filters) => {
-      console.log(filters);
-      return true;
+      return (Object.keys(filters).includes('search') && filters['search'] !== '') 
     },
     isRemovable: true,
     onRemove: (filters) => {
@@ -36,13 +37,12 @@ const FILTER_LIST = [
         style: "currency",
         currency: "USD",
       });
-      return `From ${gte_price} to ${lte_price}`;
+      return `Từ ${gte_price} đến ${lte_price}`;
     },
     isActive: () => true,
     isVisible: (filters) => {
-      //  return ( Object.keys(filters).includes("price_lte") &&
-      //  Object.keys(filters).includes("price_gte"))
-      return true;
+       return ( Object.keys(filters).includes("price_lte") &&
+       Object.keys(filters).includes("price_gte"))
     },
     isRemovable: true,
     onRemove: (filters) => {

@@ -13,7 +13,7 @@ ChangeInformationForm.propTypes = {
 
 function ChangeInformationForm({ onSubmit, userInfor }) {
   const schema = yup.object().shape({
-    fullName: yup.string().required("Please enter full name"),
+    fullName: yup.string().required("Nhập tên của người dùng"),
     telephoneNumber: yup.string(),
     address: yup.string(),
   });
@@ -40,14 +40,14 @@ function ChangeInformationForm({ onSubmit, userInfor }) {
       >
         <div className="mt-4 px-4 flex-2">
           <h2 className="font-bold uppercase text-2xl mb-4 text-center">
-            Change information
+            THAY ĐỔI THÔNG TIN NGƯỜI DÙNG
           </h2>
           <Divider className="w-full" />
           <div className="mt-4">
             <InputField
               id="fullName"
-              label="Full name"
-              placeholder="Enter your full name..."
+              label="Tên đầy đủ"
+              placeholder="Nhập tên của người dùng..."
               register={{
                 ...register("fullName", {
                   value: userInfor.fullName || ''
@@ -60,8 +60,8 @@ function ChangeInformationForm({ onSubmit, userInfor }) {
           </div>
           <InputField
             id="telephoneNumber"
-            label="Telephone number"
-            placeholder="Enter your telephone number..."
+            label="Số điện thoại"
+            placeholder="Nhập số điện thoại của người dùng..."
             register={{
               ...register("telephoneNumber", {
                 value: userInfor.telephoneNumber || ''
@@ -73,8 +73,8 @@ function ChangeInformationForm({ onSubmit, userInfor }) {
           />
           <InputField
             id="address"
-            label="Address"
-            placeholder="Enter your address..."
+            label="Địa chỉ"
+            placeholder="Nhập địa chỉ của người dùng..."
             register={{
               ...register("address",  {
                   value: userInfor.address || ''
@@ -86,7 +86,7 @@ function ChangeInformationForm({ onSubmit, userInfor }) {
           />
         </div>
         <button className="absolute  hover:bg-blue-700 bottom-2 right-2 w-24 mt-12 py-2 px-4 self-end bg-blue-500 rounded-md text-white text-lg cursor-pointer">
-          SAVE
+          LƯU
         </button>
       </form>
     </Paper>

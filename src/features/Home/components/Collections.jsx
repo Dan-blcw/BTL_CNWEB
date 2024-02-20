@@ -3,7 +3,7 @@ import React from "react";
 function Collections() {
   return (
     <div className="mt-14 flex flex-col items-center">
-      <h2 className="uppercase text-3xl font-bold mb-8">Our Collections</h2>
+      <h2 className="uppercase text-3xl font-bold mb-8">Bộ sưu tầm của chúng tôi</h2>
       <div className="relative">
         <img
           className="w-full"

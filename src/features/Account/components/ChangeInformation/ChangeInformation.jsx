@@ -4,6 +4,7 @@ import ChangePasswordForm from "./ChangeInformationForm";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { updateInformation } from "../../../Auth/userSlice";
+import userApi from "../../../../apis/userApi";
 
 ChangeInformation.propTypes = {};
 
@@ -11,6 +12,7 @@ function ChangeInformation({userInfor}) {
   const dispatch = useDispatch()
   const handleSubmit = async (data) => {
     try {
+      const res = await userApi.updateInfo(data)
       dispatch(updateInformation({
         newInformation: data
       }))

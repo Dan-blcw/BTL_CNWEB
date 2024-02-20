@@ -18,7 +18,7 @@ function FilterByBrand({ onChange }) {
 
   return (
     <div className="border-t-2 solid gray-300 pt-2 ">
-      <span className="text-xl">BRANDS</span>
+      <span className="text-xl">THƯƠNG HIỆU</span>
       <ul className="pl-4">
         {brand_list.map((brand, index) => {
           return (

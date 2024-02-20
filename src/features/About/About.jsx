@@ -11,8 +11,15 @@ function About() {
         />
       </div>
       <div className="flex-1 text-gray-600 ml-8 font-mono h-[500px] flex flex-col justify-between">
-        <h4 className="text-3xl">ABOUT US</h4>
+        <h4 className="text-3xl">THÔNG TIN VỀ CHÚNG TÔI</h4>
         <div className="overflow-y-auto">
+          <p>
+            Welcome to MICHAEL, your premier destination for luxury timepieces.
+            We take pride in curating a diverse and sophisticated collection of
+            watches from renowned brands such as Rolex, Casio, Cartier, Calvin
+            Klein, Longines, Jaeger-LeCoultre, and even Apple.
+          </p>
+          <br></br>
           <p>
             Welcome to MICHAEL, your premier destination for luxury timepieces.
             We take pride in curating a diverse and sophisticated collection of

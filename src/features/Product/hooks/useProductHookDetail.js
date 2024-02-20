@@ -3,13 +3,20 @@ import productApi from "../../../apis/productApi";
 
 export default function useProductDetail(id) {
   const [product, setProduct] = useState({});
+  const [relatedProductList, setRelatedProductList] = useState([])
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       try {
-        const result = await productApi.get(id);
-        setProduct(result);
+        const fetchProductResult = await productApi.get(id);
+        const fetchRelatedProductResult = await productApi.getRelatedProduct(id)
+        console.log({
+          fetchProductResult,
+          fetchRelatedProductResult
+        });
+        setProduct(fetchProductResult);
+        setRelatedProductList(fetchRelatedProductResult);
       } catch (error) {
         console.log("Failed to fetch product", error);
       }
@@ -17,5 +24,5 @@ export default function useProductDetail(id) {
     })();
   }, [id]);
 
-  return { product, loading };
+  return { product, relatedProductList, loading};
 }

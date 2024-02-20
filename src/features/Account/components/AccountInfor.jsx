@@ -13,10 +13,11 @@ AccountInfor.propTypes = {
 };
 
 function AccountInfor({ userInfor }) {
+  console.log(userInfor);
   return (
     <Paper className="flex flex-col items-center py-4 px-8 ">
       <h2 className="font-bold uppercase text-2xl mb-4 text-center">
-        Information
+        THÔNG TIN NGƯỜI DÙNG
       </h2>
       <Divider className="w-full" />
       <img
@@ -31,7 +32,7 @@ function AccountInfor({ userInfor }) {
       <ul className="mt-4 list-none">
         <li className="flex items-center mb-2">
           <PersonIcon />
-          <span className="ml-2">Fullname: {userInfor.fullName}</span>
+          <span className="ml-2">Tên đầy đủ: {userInfor.fullName}</span>
         </li>
         <li className="flex items-center mb-2">
           <EmailIcon />
@@ -39,11 +40,11 @@ function AccountInfor({ userInfor }) {
         </li>
         <li className="flex items-center mb-2">
           <LocalPhoneIcon />
-          <span className="ml-2">Phone: {userInfor.telephoneNumber}</span>
+          <span className="ml-2">Số điện thoại: {userInfor.telephoneNumber}</span>
         </li>
         <li className="flex items-center mb-2">
           <LocationOnIcon />
-          <span className="ml-2">Address: {userInfor.address}</span>
+          <span className="ml-2">Địa chỉ: {userInfor.address}</span>
         </li>
       </ul>
     </Paper>

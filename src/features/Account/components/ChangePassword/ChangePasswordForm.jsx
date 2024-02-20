@@ -12,15 +12,15 @@ ChangePasswordForm.propTypes = {
 
 function ChangePasswordForm({ onSubmit }) {
   const schema = yup.object().shape({
-    oldPassword: yup.string().required("Please enter old password"),
+    oldPassword: yup.string().required("Nhập mật khẩu cũ của bạn"),
     newPassword: yup
       .string()
-      .required("Please enter your password.")
-      .min(6, "Please enter at least 6 characters."),
+      .required("Nhập mật khẩu mới của bạn.")
+      .min(6, "Mật khẩu phải chứa ít nhất 6 kí tự."),
     retypeNewPassword: yup
       .string()
-      .required("Please retype your password.")
-      .oneOf([yup.ref("newPassword")], "Password does not match"),
+      .required("Nhập lại mật khẩu của bạn.")
+      .oneOf([yup.ref("newPassword")], "Mật khẩu không khớp"),
   });
   const {
     handleSubmit,
@@ -45,14 +45,14 @@ function ChangePasswordForm({ onSubmit }) {
       >
         <div className="mt-4 px-4 flex-2">
           <h2 className="font-bold uppercase text-2xl mb-4 text-center">
-            Change password
+            THAY ĐỔI MẬT KHẨU
           </h2>
           <Divider className="w-full" />
           <div className="mt-4">
             <PasswordField
               id="oldPassword"
-              label="Old password"
-              placeholder="Enter your old password..."
+              label="Mật khẩu cũ"
+              placeholder="Nhập mật khẩu cũ..."
               register={{
                 ...register("oldPassword"),
               }}
@@ -62,8 +62,8 @@ function ChangePasswordForm({ onSubmit }) {
           </div>
           <PasswordField
             id="newPassword"
-            label="New password"
-            placeholder="Enter your new password..."
+            label="Mật khẩu mới"
+            placeholder="Nhập mật khẩu mới..."
             register={{
               ...register("newPassword"),
             }}
@@ -72,8 +72,8 @@ function ChangePasswordForm({ onSubmit }) {
           />
           <PasswordField
             id="retypeNewPassword"
-            label="Retype new password"
-            placeholder="Enter your new password again..."
+            label="Xác nhận mật khẩu"
+            placeholder="Nhập lại mật khẩu..."
             register={{
               ...register("retypeNewPassword"),
             }}
@@ -82,7 +82,7 @@ function ChangePasswordForm({ onSubmit }) {
           />
         </div>
         <button className="absolute  hover:bg-blue-700 bottom-2 right-2 w-24 mt-12 py-2 px-4 self-end bg-blue-500 rounded-md text-white text-lg cursor-pointer">
-          SAVE
+          LƯU
         </button>
       </form>
     </Paper>

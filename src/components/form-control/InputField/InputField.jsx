@@ -25,7 +25,7 @@ function InputField({
     <div className="mb-2">
       <label htmlFor={id} className="block text-sm font-semibold text-gray-800">
         {label}
-        {required && <span className="font-light text-sm"> (required)</span>}
+        {required && <span className="font-light text-sm"> (bắt buộc)</span>}
       </label>
       <input
         id={id}

@@ -10,14 +10,12 @@ function ProductUpdate({ product, closeForm }) {
       const response = await productApi.updateProduct(data);
 
       closeForm();
-      console.log("Data product after update: ", data);
-
-      toast.success("Update product successfully 🎉", {
+      toast.success("Cập nhật sản phẩm thành công 🎉", {
         autoClose: 3000,
       });
     } catch (error) {
       console.log(error);
-      toast.error("Update product failed 🙁", {
+      toast.error("Cập nhật sản phẩm thất bại 🙁", {
         autoClose: 3000,
       });
     }

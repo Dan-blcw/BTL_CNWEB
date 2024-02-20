@@ -29,7 +29,7 @@ function NewArrivals() {
     <div className="pt-14 pb-16 flex flex-col items-center">
       <div>
         <h2 className="uppercase text-center mb-8 text-3xl font-bold">
-          New Arrivals
+          Sản phẩm mới
         </h2>
         <div className="flex flex-row gap-6">
           {ArrivalList.map((watch) => {

@@ -48,6 +48,7 @@ const userSlice = createSlice({
       cvv: "",
     },
     information: JSON.parse(localStorage.getItem(StorageKeys.INFORMATION)) || {},
+    delivery: JSON.parse(localStorage.getItem(StorageKeys.INFORMATION)) || {},
   },
   reducers: {
     logout(state) {
@@ -206,6 +207,16 @@ const userSlice = createSlice({
         // Update localStorage
         localStorage.setItem(StorageKeys.INFORMATION, JSON.stringify(state.information));
       }
+    },
+    updateInformationDelivery(state, action) {
+      const {newInformation} = action.payload
+      const oldInformation = state.delivery
+      if(newInformation) {
+        state.delivery = {
+          ...oldInformation,
+          ...newInformation,
+        }
+      }
     }
   },
   extraReducers: {
@@ -231,5 +242,6 @@ export const {
   changeQuanity,
   checkoutCompleted,
   changeInforPayment,
-  updateInformation
+  updateInformation,
+  updateInformationDelivery
 } = actions;

@@ -14,18 +14,17 @@ import {
 import { useSelector } from "react-redux";
 
 const PRODUCT_HEADER_LABEL = [
-  { id: 1, name: "Name" },
-  { id: 2, name: "Image" },
-  { id: 3, name: "Color" },
-  { id: 4, name: "Brand" },
-  { id: 5, name: "Coutry" },
-  { id: 6, name: "Price" },
-  { id: 7, name: "Action" },
+  { id: 1, name: "Tên sản phẩm" },
+  { id: 2, name: "Ảnh minh họa" },
+  { id: 3, name: "Màu" },
+  { id: 4, name: "Thương hiệu" },
+  { id: 5, name: "Quốc gia" },
+  { id: 6, name: "Giá" },
+  { id: 7, name: "Hành động" },
 ];
 
 function ProductListAdmin() {
   const [productList, setProductList] = useState([]);
-  const { product_list } = useSelector((state) => state.products);
   const [updatingProduct, setUpdatingProduct] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [open, setOpen] = React.useState(false);
@@ -36,7 +35,7 @@ function ProductListAdmin() {
   // Calculate the index range for the current page
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = product_list.slice(
+  const currentProducts = productList.slice(
     indexOfFirstProduct,
     indexOfLastProduct
   );
@@ -54,7 +53,7 @@ function ProductListAdmin() {
   const handleDeleteProduct = async () => {
     // Gọi API delete product ở đây
     if (productToDelete) {
-      // const res = await productApi.removeProduct(productToDelete.id);
+      const res = await productApi.removeProduct(productToDelete.id);
       // Add any additional logic after deletion if needed
       console.log("Product deleted:", productToDelete);
       // Reset the productToDelete state
@@ -65,16 +64,16 @@ function ProductListAdmin() {
   };
 
   // Call API lấy dạnh sách sản phẩm
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const { data } = await productApi.getAll();
-  //       setProductList(data);
-  //     } catch (error) {
-  //       console.log("Error: ", error);
-  //     }
-  //   })();
-  // }, [productList]);
+  useEffect(() => {
+    (async () => {
+      try {
+        const { data } = await productApi.getAll();
+        setProductList(data);
+      } catch (error) {
+        console.log("Error: ", error);
+      }
+    })();
+  }, [productList]);
 
   const handleUpdateProduct = (product) => {
     setSelectedProduct(product);
@@ -135,7 +134,7 @@ function ProductListAdmin() {
                     >
                       <MdOutlineCreate className="mr-1 text-lg" />
                       <span className="font-medium text-blue-600 dark:text-blue-500">
-                        Edit
+                        Chỉnh sửa
                       </span>
                     </div>
                     <div
@@ -144,7 +143,7 @@ function ProductListAdmin() {
                     >
                       <MdDeleteOutline className="mr-1 text-lg" />
                       <span className="font-medium text-red-600 dark:text-red-500 ">
-                        Remove
+                        Xóa
                       </span>
                     </div>
                   </td>
@@ -162,24 +161,24 @@ function ProductListAdmin() {
         aria-describedby="alert-dialog-description"
       >
         <DialogTitle id="alert-dialog-title">
-          {"Comfirm remove product"}
+          {"Xác nhận xóa sản phẩm"}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Do you really want to remove this product from the product list?
+            Bạn có thực sự muốn xóa sản phẩm này khỏi danh sách sản phẩm không?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleClose}>Hủy</Button>
           <Button onClick={handleDeleteProduct} autoFocus>
-            Comfirm
+            Xác nhận
           </Button>
         </DialogActions>
       </Dialog>
 
       <Pagination
         className="mt-4 flex justify-center"
-        count={Math.ceil(product_list.length / productsPerPage)}
+        count={Math.ceil(productList.length / productsPerPage)}
         page={currentPage}
         variant="outlined"
         shape="rounded"

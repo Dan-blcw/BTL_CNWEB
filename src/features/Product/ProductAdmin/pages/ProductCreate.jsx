@@ -12,16 +12,16 @@ function ProductCreate(props) {
       const response = await productApi.addProduct(data);
       // Check response
       if (response.status === 201) {
-        toast.success("Add product successfully 🎉", {
+        toast.success("Tạo mới sản phẩm thành công 🎉", {
           autoClose: 3000,
         });
       } else {
-        toast.error("Failed to add product 🙁", {
+        toast.error("Tạo mới sản phẩm thất bại 🙁", {
           autoClose: 3000,
         });
       }
     } catch (error) {
-      toast.error("Add product failed 🙁", {
+      toast.error("Tạo mới sản phẩm thất bại 🙁", {
         autoClose: 3000,
       });
     }

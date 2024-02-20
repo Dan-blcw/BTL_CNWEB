@@ -64,7 +64,7 @@ function CartItem({ item }) {
         <div className="flex flex-col">
           <span>{item.name}</span>
           <span>
-            Unit price:{" "}
+            Đơn giá:{" "}
             {item.unitPrice.toLocaleString("en-US", {
               style: "currency",
               currency: "USD",
@@ -98,10 +98,10 @@ function CartItem({ item }) {
         </span>
         <button
           onClick={handleRemoveItem}
-          className="max-w-24 px-2 py-1 flex items-center rounded bg-red-500 text-white mt-4"
+          className="max-w-36 px-2 py-1 flex items-center rounded bg-red-500 text-white mt-4"
         >
           <ClearIcon className="text-xl" />
-          <span>Remove</span>
+          <span>Xóa sản phẩm</span>
         </button>
       </div>
     </div>

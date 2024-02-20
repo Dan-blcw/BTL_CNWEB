@@ -4,7 +4,7 @@ import axiosClient from "./axiosClient";
 const productApi = {
   getAll(params) {
     try {
-      const url = `/api/v1/admin/list-ob`;
+      const url = `/api/v1/global/list-ob`;
       return axiosClient.get(url, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem(StorageKeys.TOKEN)}`,
@@ -17,9 +17,23 @@ const productApi = {
     }
   },
 
+  checkoutProduct(data) {
+    try {
+      const url = `/api/v1/global/generate`;
+      return axiosClient.post(url,data , {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem(StorageKeys.TOKEN)}`,
+        },
+      });
+    } catch (error) {
+      // Xử lý các lỗi
+      throw error;
+    }
+  },
+
   addProduct(data) {
     try {
-      const url = "/api/v1/add-ob";
+      const url = "/api/v1/admin/add-ob";
       return axiosClient.post(url, data, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem(StorageKeys.TOKEN)}`,
@@ -31,10 +45,29 @@ const productApi = {
     }
   },
 
+  
+  get(id) {
+    try {
+      const url = `/api/v1/global/detail-ob?id=${id}`;
+      return axiosClient.get(url);
+    } catch (error) {
+      
+    }
+  },
+
+  getRelatedProduct(id) {
+    try {
+      const url = `/api/v1/global/related-ob?id=${id}`;
+      return axiosClient.get(url)
+    } catch (error) {
+      throw error;
+    }
+  },
+
   removeProduct(id) {
     try {
-      const url = `/api/v1/delete-ob/${id}`;
-      return axiosClient.post(url, {
+      const url = `/api/v1/admin/delete-ob/${id}`;
+      return axiosClient.delete(url, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem(StorageKeys.TOKEN)}`,
         },
@@ -47,8 +80,8 @@ const productApi = {
 
   updateProduct(data) {
     try {
-      const url = `/api/v1/update-ob/${data.id}`;
-      return axiosClient.post(url, data, {
+      const url = `/api/v1/admin/update-ob/${data.id}`;
+      return axiosClient.put(url, data, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem(StorageKeys.TOKEN)}`,
         },
@@ -58,6 +91,8 @@ const productApi = {
       throw error;
     }
   },
+
+  
 };
 
 export default productApi;

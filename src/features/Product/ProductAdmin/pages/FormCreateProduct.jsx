@@ -59,7 +59,7 @@ function FormCreateProduct({ onSubmit }) {
         />
       )}
       <h2 className="uppercase font-semibold text-xl text-center">
-        Create new product
+        Tạo mới sản phẩm
       </h2>
       <form
         className="mt-6 flex flex-wrap gap-12 mb-4"
@@ -72,8 +72,8 @@ function FormCreateProduct({ onSubmit }) {
               <InputField
                 id="product_name"
                 type="text"
-                label="Product name"
-                placeholder="Enter product name..."
+                label="Tên sản phẩm"
+                placeholder="Nhập tên của sản phẩm..."
                 required={true}
                 register={{ ...register("name") }}
                 errorMessage={errors.name?.message}
@@ -82,9 +82,9 @@ function FormCreateProduct({ onSubmit }) {
             <div className="flex-1">
               <InputField
                 id="price"
-                label="Price"
+                label="Giá"
                 type="number"
-                placeholder="Enter price of product..."
+                placeholder="Giá của sản phẩm ..."
                 required={true}
                 register={{ ...register("price", { value: 0 }) }}
                 errorMessage={errors.price?.message}
@@ -95,21 +95,21 @@ function FormCreateProduct({ onSubmit }) {
           <div className="flex flex-wrap items-center justify-between">
             <SelectField
               name="color"
-              label="Color"
+              label="Màu sắc"
               register={{ ...register("color") }}
               options={COLOR_LIST}
             />
 
             <SelectField
               name="brand"
-              label="Brand"
+              label="Thương hiệu"
               register={{ ...register("brand") }}
               options={BRAND_LIST}
             />
 
             <SelectField
               name="country"
-              label="Coutry"
+              label="Quốc gia"
               register={{ ...register("country") }}
               options={COUNTRY_LIST}
             />
@@ -117,10 +117,10 @@ function FormCreateProduct({ onSubmit }) {
 
           <InputField
             id="pictureURL"
-            label="URL of picture"
+            label="URL của ảnh"
             name="pictureURL"
             type="text"
-            placeholder="Enter url of image..."
+            placeholder="Nhập url của ảnh ..."
             required={true}
             register={{ ...register("pictureURL") }}
             errorMessage={errors.pictureURL?.message}
@@ -128,8 +128,8 @@ function FormCreateProduct({ onSubmit }) {
 
           <TextAreaField
             name="description"
-            label="Description"
-            placeholder="Write descriptions about product thoughts here..."
+            label="Mô tả"
+            placeholder="Viết mô tả suy nghĩ về sản phẩm ở đây..."
             row={6}
             register={{ ...register("description") }}
           />
@@ -137,7 +137,7 @@ function FormCreateProduct({ onSubmit }) {
 
         <div className="mt-6 absolute bottom-4 right-4 w-36">
           <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
-            Create
+            Tạo sản phẩm
           </button>
         </div>
       </form>

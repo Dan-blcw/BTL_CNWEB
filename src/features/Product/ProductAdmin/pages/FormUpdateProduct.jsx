@@ -23,12 +23,12 @@ function FormUpdateProduct({ onSubmit, onClose, product }) {
   );
 
   const schema = yup.object().shape({
-    name: yup.string().required("Please enter product name."),
+    name: yup.string().required("Hãy nhập tên sản phẩm."),
     price: yup
       .number()
-      .required("Please enter product price.")
-      .moreThan(0, "Price must be greater than 0"),
-    pictureURL: yup.string().required("Please enter URL image."),
+      .required("Hãy nhập giá sản phẩm.")
+      .moreThan(0, "Giá sản phẩm phải lớn hơn 0"),
+    pictureURL: yup.string().required("Hãy nhập URL của ảnh."),
   });
 
   const {
@@ -61,7 +61,7 @@ function FormUpdateProduct({ onSubmit, onClose, product }) {
         className="absolute top-2 right-2 cursor-pointer text-xl"
       />
       <h2 className="uppercase font-semibold text-xl text-center">
-        Update Product: {product.name}
+        Cập nhật sản phẩm: {product.name}
       </h2>
       <form
         className="mt-6 flex flex-wrap gap-12 mb-4"
@@ -74,9 +74,9 @@ function FormUpdateProduct({ onSubmit, onClose, product }) {
               <InputField
                 id="product_name"
                 type="text"
-                label="Product name"
+                label="Tên sản phẩm"
                 valueUpdate={product.name}
-                placeholder="Enter product name..."
+                placeholder="Hãy nhập tên của sản phẩm..."
                 required={true}
                 register={{
                   ...register("name", {
@@ -89,9 +89,9 @@ function FormUpdateProduct({ onSubmit, onClose, product }) {
             <div className="flex-1">
               <InputField
                 id="price"
-                label="Price"
+                label="Giá"
                 type="number"
-                placeholder="Enter price of product..."
+                placeholder="Hãy nhập giá của sản phẩm ..."
                 required={true}
                 register={{
                   ...register("price", {
@@ -106,7 +106,7 @@ function FormUpdateProduct({ onSubmit, onClose, product }) {
           <div className="flex flex-wrap items-center justify-between">
             <SelectField
               name="color"
-              label="Color"
+              label="Màu sắc"
               register={{
                 ...register("color", {
                   value: product.color,
@@ -117,7 +117,7 @@ function FormUpdateProduct({ onSubmit, onClose, product }) {
 
             <SelectField
               name="brand"
-              label="Brand"
+              label="Thương hiệu"
               register={{
                 ...register("brand", {
                   value: product.brand,
@@ -128,7 +128,7 @@ function FormUpdateProduct({ onSubmit, onClose, product }) {
 
             <SelectField
               name="country"
-              label="Coutry"
+              label="Quốc gia"
               register={{
                 ...register("country", {
                   value: product.country,
@@ -140,10 +140,10 @@ function FormUpdateProduct({ onSubmit, onClose, product }) {
 
           <InputField
             id="pictureURL"
-            label="URL of picture"
+            label="URL của ảnh"
             name="pictureURL"
             type="text"
-            placeholder="Enter url of image..."
+            placeholder="Hãy nhập URL ảnh của sản phẩm..."
             required={true}
             valueUpdate={product.pictureURL}
             register={{
@@ -156,8 +156,8 @@ function FormUpdateProduct({ onSubmit, onClose, product }) {
 
           <TextAreaField
             name="description"
-            label="Description"
-            placeholder="Write descriptions about product thoughts here..."
+            label="Mô tả"
+            placeholder="Viết mô tả suy nghĩ về sản phẩm ở đây..."
             row={6}
             register={{
               ...register("description", {
@@ -169,7 +169,7 @@ function FormUpdateProduct({ onSubmit, onClose, product }) {
 
         <div className="mt-6 absolute bottom-4 right-4 w-36">
           <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600">
-            Save
+            Cập nhật
           </button>
         </div>
       </form>

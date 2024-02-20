@@ -6,13 +6,13 @@ import { IoIosCreate } from "react-icons/io";
 const SIDE_BAR = [
   {
     id: 1,
-    name: "Product list",
+    name: "Danh sách sản phẩm",
     url: "/admin/product-list",
     icon: <FaRegListAlt />,
   },
   {
     id: 2,
-    name: "Add product",
+    name: "Tạo mới sản phẩm",
     url: "/admin/create",
     icon: <IoIosCreate />,
   },

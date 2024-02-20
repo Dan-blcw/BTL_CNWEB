@@ -15,7 +15,7 @@ function TextAreaField({ name, label, placeholder, row = 4, register }) {
     <div className="mb-2">
       <label
         htmlFor={name}
-        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        className="block mb-2 text-sm font-medium text-gray-900"
       >
         {label}
       </label>

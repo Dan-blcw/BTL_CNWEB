@@ -8,35 +8,30 @@ import { useSelector } from "react-redux";
 import { Divider } from "@mui/material";
 
 export default function Review() {
-  const { payment } = useSelector((state) => state.user);
-  const { cart } = useSelector((state) => state.user);
-  const [inforUser, setInforUser] = React.useState({
-    fullName: "Nguyễn Xuân Phong",
-    address: "Vĩnh Quỳnh, Thanh Trì",
-    telephoneNumber: "0987654321",
-    city: "Thành phố Hà Nội",
-  });
+  const { payment, delivery, cart } = useSelector((state) => state.user);
+  const [inforUser, setInforUser] = React.useState(delivery);
   const payments = [
-    { name: "Card type", detail: "Visa" },
-    { name: "Card holder", detail: `Mr ${inforUser.fullName}` },
+    { name: "Loại thẻ", detail: "Visa" },
+    { name: "Chủ thẻ", detail: `Mr ${inforUser.fullName}` },
     {
-      name: "Card number",
+      name: "Số thẻ",
       detail: `xxxx-xxxx-xxxx-${payment.cardNumber.slice(-4)}`,
     },
-    { name: "Expiry date", detail: `${payment.expDate}` },
+    { name: "Ngày hết hạn", detail: `${payment.expDate}` },
   ];
-  const addresses = [inforUser.address, inforUser.city];
+
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Order summary
+       Tóm tắt đơn hàng
       </Typography>
       <List disablePadding>
         {cart.items.map((product) => (
           <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
             <ListItemText
               primary={product.name}
-              secondary={`Quanity: x${product.count}`}
+              secondary={`Số lượng: x${product.count}`}
             />
             <Typography variant="body2">
               {product.totalPrice.toLocaleString("en-US", {
@@ -72,14 +67,14 @@ export default function Review() {
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
-            Shipping
+            Vận chuyển
           </Typography>
           <Typography gutterBottom>{inforUser.fullName}</Typography>
-          <Typography gutterBottom>{addresses.join(", ")}</Typography>
+          <Typography gutterBottom>{inforUser.address}</Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
-            Payment details
+            Chi tiết thanh toán
           </Typography>
           <Grid container>
             {payments.map((payment) => (

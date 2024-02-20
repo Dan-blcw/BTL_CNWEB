@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import React, { useEffect, useRef, useState } from "react";
 import { FaRegUser } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo2 from "../../assets/images/MC_logo_2022.svg";
 import StorageKeys from "../../constants/storage-key";
 import { logout } from "../../features/Auth/userSlice";
@@ -17,14 +17,15 @@ Header.propTypes = {
 };
 
 const NAVIGATIONS = [
-  { id: 1, name: "Home", url: "/" },
-  { id: 3, name: "Products", url: "/products" },
-  { id: 2, name: "About", url: "/about" },
-  { id: 4, name: "Cart", url: "/cart" },
+  { id: 1, name: "Trang chủ", url: "/" },
+  { id: 3, name: "Danh sách sản phẩm", url: "/products" },
+  { id: 2, name: "Thông tin", url: "/about" },
+  { id: 4, name: "Giỏ hàng", url: "/cart" },
 ];
 
 function Header({ openForm }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const [isOpenedMenu, setOpenedMenu] = useState(false);
   const [showCart, setShowCart] = useState(false);
@@ -32,6 +33,11 @@ function Header({ openForm }) {
   const { totalItem } = useSelector((state) => state.user.cart);
   const infoUser = useSelector((state) => state.user.current);
   const isAuthenication = !!infoUser.id;
+
+  let isAdmin
+  if(Object.keys(infoUser).length > 0) {
+    isAdmin = infoUser?.role === "ADMIN" ;
+  }
 
   const menuRef = useRef(null);
 
@@ -62,6 +68,7 @@ function Header({ openForm }) {
   const handleLogoutAccount = () => {
     const action = logout();
     dispatch(action);
+    navigate('/')
   };
 
   return (
@@ -121,7 +128,7 @@ function Header({ openForm }) {
             onClick={handleClickLogin}
           >
             <FaRegUser />
-            <span className="ml-2">Login</span>
+            <span className="ml-2">Đăng nhập</span>
           </div>
         )}
 
@@ -152,20 +159,20 @@ function Header({ openForm }) {
                   </span>
                 </div>
                 <ul className="py-2 border-t border-solid">
-                  <li>
+                  { isAdmin && (<li>
                     <Link
                       to="/admin/product-list"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
-                      Manage product
+                      Quản lý sản phẩm
                     </Link>
-                  </li>
+                  </li>)}
                   <li>
                     <Link
                       to="/user/account"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
-                      Account
+                      Tài khoản
                     </Link>
                   </li>
                   <li>
@@ -173,7 +180,7 @@ function Header({ openForm }) {
                       onClick={handleLogoutAccount}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                     >
-                      Sign out
+                      Đăng xuất
                     </span>
                   </li>
                 </ul>

@@ -32,7 +32,7 @@ function FilterByPrice({ onChange }) {
 
   return (
     <div className="border-t-2 border-solid gray-300 pt-2 pb-4">
-      <span className="text-xl">RANGE PRICE</span>
+      <span className="text-xl">KHOẢNG GIÁ</span>
       <div className="mt-2 flex items-center justify-between">
         <input
           name="price_gte"
@@ -56,7 +56,7 @@ function FilterByPrice({ onChange }) {
         onClick={handleSubmit}
         className="outline-none mt-2 w-full text-white bg-blue-700 hover:bg-blue-600 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
       >
-        APPLY
+        ÁP DỤNG
       </button>
     </div>
   );

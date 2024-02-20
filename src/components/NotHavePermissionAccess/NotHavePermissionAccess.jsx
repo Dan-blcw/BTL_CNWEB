@@ -1,9 +1,9 @@
 import React from "react";
 import bgDeniedPage from "../../assets/images/bg_denied_page.png";
 
-function NotHavePermissionAccess(props) {
+function NotHavePermissionAccess() {
   return (
-    <div className="w-full pt-[var(--height-header)] h-[calc(100vh-var(--height-header))]">
+    <div className="w-full mt-[var(--height-header)] h-[calc(100vh-var(--height-header))]">
       <img
         src={bgDeniedPage}
         alt=""

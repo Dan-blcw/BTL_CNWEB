@@ -1,13 +1,14 @@
 import axiosClient from "./axiosClient";
+import StorageKeys from "../constants/storage-key";
 
 const userApi = {
   login(data) {
-    const url = "/auth/local";
+    const url = "/api/v1/auth/login";
     return axiosClient.post(url, data);
   },
 
   register(data) {
-    const url = "/auth/local/register";
+    const url = "/api/v1/auth/register";
     return axiosClient.post(url, data);
   },
 
@@ -24,13 +25,21 @@ const userApi = {
   },
 
   updateInfo(newInfor) {
-    const url = "/user/information/update";
-    return axiosClient.post(url, newInfor);
+    const url = "/api/v1/user/change-profile";
+    return axiosClient.patch(url, newInfor,{
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem(StorageKeys.TOKEN)}`,
+      },
+    });
   },
 
   updatePassword(newPassword) {
-    const url = "/auth/local/password/update";
-    return axiosClient.post(url, newPassword);
+    const url = "/api/v1/user/change-password";
+    return axiosClient.patch(url, newPassword,{
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem(StorageKeys.TOKEN)}`,
+      },
+    });
   },
 };
 

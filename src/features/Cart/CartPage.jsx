@@ -32,7 +32,7 @@ function CartPage(props) {
         <div className="bg-white rounded py-2 px-6 min-w-72 max-h-52">
           <div className="flex flex-col mb-2">
             <div className="flex justify-between">
-              <span>Subtotal: </span>
+              <span>Giá tổng sản phẩm: </span>
               <span>
                 {subtotalCost.toLocaleString("en-US", {
                   style: "currency",
@@ -41,7 +41,7 @@ function CartPage(props) {
               </span>
             </div>
             <div className="flex justify-between">
-              <span>Shipping: </span>
+              <span>Giá vận chuyển: </span>
               <span>
                 {shippingCost.toLocaleString("en-US", {
                   style: "currency",
@@ -53,7 +53,7 @@ function CartPage(props) {
           <Divider />
           <div className="flex flex-col mt-2">
             <div className="font-bold flex justify-between">
-              <span>Total: </span>
+              <span>Tổng tiền: </span>
               <span>
                 {total.toLocaleString("en-US", {
                   style: "currency",
@@ -63,24 +63,26 @@ function CartPage(props) {
             </div>
             <div className="flex justify-end">
               <span className="text-sm italic font-extralight">
-                Including VAT
+                Bao gồm VAT
               </span>
             </div>
           </div>
-          <Button
-            variant="contained"
-            disabled={cartIsEmpty}
-            sx={{
-              marginTop: "2rem",
-              paddingX: "1rem",
-              width: "100%",
-              fontSize: "500",
-              borderRadius: "4px",
-              backgroundColor: "rgb(59,13,246)",
-            }}
-          >
-            <Link to="/cart/checkout">Check out</Link>
-          </Button>
+          <Link  to="/cart/checkout">
+            <Button
+              variant="contained"
+              disabled={cartIsEmpty}
+              sx={{
+                marginTop: "2rem",
+                paddingX: "1rem",
+                width: "100%",
+                fontSize: "500",
+                borderRadius: "4px",
+                backgroundColor: "rgb(59,13,246)",
+              }}
+            >
+              Thanh toán
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

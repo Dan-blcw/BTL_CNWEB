@@ -20,7 +20,7 @@ function FilterByKeyword({ onChange }) {
   };
   return (
     <div>
-      <span className="text-xl">SEARCH PRODUCT</span>
+      <span className="text-xl">TÌM KIẾM SẢN PHẨM</span>
       <div className="mt-2 mb-3">
         <div className="relative mb-4 flex w-full flex-wrap items-stretch">
           <input

@@ -1,14 +1,13 @@
-import React, { useEffect, useMemo, useState } from "react";
-import ProductFilter from "./components/ProductFilter";
-import { useLocation, useNavigate } from "react-router-dom";
+import AnnouncementIcon from "@mui/icons-material/Announcement";
+import { Alert, Box, Pagination } from "@mui/material";
 import queryString from "query-string";
-import ProductItem from "./components/ProductItem";
+import React, { useEffect, useMemo, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import productApi from "../../../apis/productApi";
 import FilterViewer from "./components/Filters/FilterViewer";
-import { Alert, Box, Pagination } from "@mui/material";
-import { useSelector } from "react-redux";
+import ProductFilter from "./components/ProductFilter";
+import ProductItem from "./components/ProductItem";
 import ProductSkeleton from "./components/ProductSkeleton";
-import AnnouncementIcon from "@mui/icons-material/Announcement";
 
 function ProductUser() {
   const navigate = useNavigate();
@@ -20,18 +19,10 @@ function ProductUser() {
       _limit: Number.parseInt(params._limit) || 12,
     };
   }, [location.search]);
+
   const [fetched, setFetched] = useState(false);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const { product_list } = useSelector((state) => state.products);
-  // Calculate the index range for the current page
-  const countElementInPage = 15;
-  const indexOfLastProduct = currentPage * countElementInPage;
-  const indexOfFirstProduct = indexOfLastProduct - countElementInPage;
-  const currentProducts = product_list.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
-  );
   const [productList, setProductList] = useState([]);
   const [pagination, setPagination] = useState({
     limit: 10,
@@ -51,6 +42,15 @@ function ProductUser() {
     })();
     setLoading(false);
   }, [queryParams]);
+
+   // Calculate the index range for the current page
+   const countElementInPage = 15;
+   const indexOfLastProduct = currentPage * countElementInPage;
+   const indexOfFirstProduct = indexOfLastProduct - countElementInPage;
+   const currentProducts = productList.slice(
+     indexOfFirstProduct,
+     indexOfLastProduct
+   );
 
   const handlePageChange = (event, page) => {
     window.scrollTo(0, 0);
@@ -83,7 +83,7 @@ function ProductUser() {
               icon={<AnnouncementIcon />}
               severity="warning"
             >
-              Sorry, no products were found matching your selection!
+             Rất tiếc, không tìm thấy sản phẩm nào phù hợp với lựa chọn của bạn!
             </Alert>
           </>
         ) : (
@@ -97,7 +97,7 @@ function ProductUser() {
               ) : (
                 <>
                   {currentProducts.map((product) => {
-                    return <ProductItem key={product.id} product={product} />;
+                    return <ProductItem key={product.id}  product={product} />;
                   })}
                 </>
               )}
@@ -114,7 +114,7 @@ function ProductUser() {
           }}
         >
           <Pagination
-            count={Math.ceil(product_list.length / countElementInPage)}
+            count={Math.ceil(productList.length / countElementInPage)}
             page={pagination.page}
             onChange={handlePageChange}
             color="primary"
