@@ -39,6 +39,7 @@ export default function Checkout() {
           info: {
             code_Bill: codeBill,
             email: information.email,
+            // email: 'user@mail.com',
             name: delivery.fullName,
             telephoneNumber: delivery.telephoneNumber,
             address_to: delivery.address

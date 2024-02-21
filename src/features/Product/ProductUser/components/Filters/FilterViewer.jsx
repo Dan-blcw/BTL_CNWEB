@@ -47,8 +47,8 @@ const FILTER_LIST = [
     isRemovable: true,
     onRemove: (filters) => {
       const newFilters = { ...filters };
-      delete newFilters["salePrice_gte"];
-      delete newFilters["salePrice_lte"];
+      delete newFilters["price_gte"];
+      delete newFilters["price_lte"];
       return newFilters;
     },
     onToggle: () => {},
